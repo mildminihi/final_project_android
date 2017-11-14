@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Pomodoro_Knight</string>
+    <string name="app_name">Pomodoro Knight</string>
+    <string name="facebook_app_id">367027377084678</string>
+    <string name="fb_login_protocol_scheme">fb367027377084678</string>
+    <string name="welcome">Welcom</string>
+    <string name="cancel_login">Cancel Login</string>
+    <string name="error_login">Error Login</string>
+    <string name="logout">Logout</string>
+    <string name="firebase_error_login">Firebase Error</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

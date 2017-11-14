@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333"
+    tools:context="wanroj.supanat.pomodoro_knight.Controller.TimerActivity">
+
+
+    <TextView
+        android:id="@+id/textViewTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:text="Name of Task"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textViewTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTask"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="3:0"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/buttonPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonStop_Start"
+        android:layout_alignBottom="@+id/buttonStop_Start"
+        android:layout_alignEnd="@+id/textViewTask"
+        android:layout_alignRight="@+id/textViewTask"
+        android:background="#771C00"
+        android:onClick="onPause"
+        android:text="Pause"
+        android:textColor="@color/cardview_light_background" />
+
+    <Button
+        android:id="@+id/buttonStop_Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewTask"
+        android:layout_alignStart="@+id/textViewTask"
+        android:layout_below="@+id/textViewTimer"
+        android:layout_marginTop="104dp"
+        android:background="#771C00"
+        android:onClick="onS"
+        android:text="Start"
+        android:textColor="@color/cardview_light_background" />
+
+    <TextView
+        android:id="@+id/textViewRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonPause"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:text="1/10"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp" />
+
+</RelativeLayout>

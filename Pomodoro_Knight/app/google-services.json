@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1093572609433",
+    "firebase_url": "https://pomodoro-knight.firebaseio.com",
+    "project_id": "pomodoro-knight",
+    "storage_bucket": "pomodoro-knight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093572609433:android:410d2e4fdf214d0f",
+        "android_client_info": {
+          "package_name": "wanroj.supanat.pomodoro_knight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093572609433-ul7gm5kdqd2qn7gduqmenjelbn8bmda4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "wanroj.supanat.pomodoro_knight",
+            "certificate_hash": "9b6292018e388919f99cb096dd1bd7718c33876f"
+          }
+        },
+        {
+          "client_id": "1093572609433-k7hqkl98ols358v9ipqe57br7c92ig3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCktbYBhzm1Bv6yVRlIiBh6bN3tZPfGMGU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093572609433-k7hqkl98ols358v9ipqe57br7c92ig3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#333333"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="wanroj.supanat.pomodoro_knight.Controller.CreateActivity">
+
+    <TextView
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="9dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayName"
+        android:text="Name of Task"
+        android:textSize="20dp"
+        android:textColor="#ffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="9dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayWork"
+        android:text="Work Interval"
+        android:textSize="20dp"
+        android:textColor="#ffff"
+        android:layout_alignBaseline="@+id/editTextWork"
+        android:layout_alignBottom="@+id/editTextWork"
+        android:layout_alignLeft="@+id/displayName"
+        android:layout_alignStart="@+id/displayName" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayBeark"
+        android:text="Short Break"
+        android:textSize="20dp"
+        android:textColor="#ffff"
+        android:layout_alignBaseline="@+id/editTextBreak"
+        android:layout_alignBottom="@+id/editTextBreak"
+        android:layout_alignLeft="@+id/displayWork"
+        android:layout_alignStart="@+id/displayWork" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayTarget"
+        android:text="Target"
+        android:textSize="20dp"
+        android:textColor="#ffff"
+        android:layout_alignBaseline="@+id/editTextTarget"
+        android:layout_alignBottom="@+id/editTextTarget"
+        android:layout_alignLeft="@+id/displayBeark"
+        android:layout_alignStart="@+id/displayBeark" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        android:layout_marginRight="9dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_alignBaseline="@+id/displayName"
+        android:layout_alignBottom="@+id/displayName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/editTextWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextName"
+        android:layout_alignStart="@+id/editTextName"
+        android:layout_below="@+id/editTextName"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="10 Minute" />
+
+    <EditText
+        android:id="@+id/editTextBreak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTextWork"
+        android:layout_alignRight="@+id/editTextWork"
+        android:layout_below="@+id/editTextWork"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="5 Minute" />
+
+    <EditText
+        android:id="@+id/editTextTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextBreak"
+        android:layout_alignStart="@+id/editTextBreak"
+        android:layout_below="@+id/editTextBreak"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="2 Per Day" />
+
+    <Button
+        android:id="@+id/buttonCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:background="#771C00"
+        android:text="Create"
+        android:textColor="@color/cardview_light_background" />
+
+
+</RelativeLayout>
