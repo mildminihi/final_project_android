@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:id="@+id/group1"
+    android:checkableBehavior="single">
 
     <item android:id="@+id/profile"
+        android:icon="@drawable/person"
         android:title="Profile" />
+
     <item android:id="@+id/timer"
+        android:icon="@drawable/timer"
         android:title="Timer" />
+
     <item android:id="@+id/add"
+        android:icon="@drawable/add"
         android:title="Add Task" />
+
+</group>
 
 </menu>
