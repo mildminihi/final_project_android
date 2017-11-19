@@ -73,18 +73,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/com_facebook_profile_picture_blank_portrait" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:background="@color/colorPrimary"
-                android:onClick="onGo"
-                android:text="Timer"
-                android:textColor="@android:color/background_light"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" />
 
             <Button
                 android:id="@+id/buttonLogout"

@@ -24,7 +24,8 @@
         </activity>
         <activity android:name=".Controller.ProfileActivity" />
         <activity android:name=".Controller.CreateActivity" />
-        <activity android:name=".Controller.TimerActivity"></activity>
+        <activity android:name=".Controller.TimerActivity" />
+        <activity android:name=".Controller.ListActivity" />
     </application>
 
 </manifest>

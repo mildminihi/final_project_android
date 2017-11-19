@@ -15,6 +15,10 @@
         android:icon="@drawable/add"
         android:title="Add Task" />
 
+    <item android:id="@+id/listmenu"
+        android:icon="@drawable/list"
+        android:title="List Tasks" />
+
 </group>
 
 </menu>

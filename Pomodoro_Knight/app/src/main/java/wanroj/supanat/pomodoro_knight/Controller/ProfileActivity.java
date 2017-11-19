@@ -102,10 +102,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         LoginManager.getInstance().logOut();
         goLoginScreen();
     }
-    public void onGo(View view){
-        Intent intent = new Intent(ProfileActivity.this, TimerActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -124,6 +121,12 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
             }
             case R.id.add:{
                 Intent intent = new Intent(ProfileActivity.this, CreateActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
+            case R.id.listmenu: {
+                Intent intent = new Intent(ProfileActivity.this, ListActivity.class);
                 startActivity(intent);
                 finish();
                 break;

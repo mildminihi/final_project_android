@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawerlist"
+    android:background="#333333"
+    tools:context="wanroj.supanat.pomodoro_knight.Controller.ListActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/displayName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@color/navigationheadercolor"
+            android:text="Task Name"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+
+        <ListView
+            android:id="@+id/listtask"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/displayName">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/buttonDeleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listtask"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp"
+            android:onClick="onDeleteAll"
+            android:text="deleteall" />
+
+        <TextView
+            android:id="@+id/displayWork"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/buttonDeleteAll"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/buttonDeleteAll"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:background="@color/navigationheadercolor"
+            android:text="Work Inteval"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/displayTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="21dp"
+            android:background="@color/navigationheadercolor"
+            android:text="Target"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
+
+        />
+
+
+
+</android.support.v4.widget.DrawerLayout>
