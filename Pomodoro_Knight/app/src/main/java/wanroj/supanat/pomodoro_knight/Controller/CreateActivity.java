@@ -17,7 +17,6 @@ import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
 import wanroj.supanat.pomodoro_knight.R;
 
 public class CreateActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private EditText editTextName, editTextWork, editTextTarget;
@@ -30,6 +29,7 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextWork = (EditText) findViewById(R.id.editTextWork);
         editTextTarget = (EditText) findViewById(R.id.editTextTarget);
+
 
         drawerLayout = (DrawerLayout)findViewById(R.id.draweradd);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
@@ -52,6 +52,7 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
                 taskInfo.setTaskName(editTextName.getText().toString());
                 taskInfo.setWorkInterval(Integer.parseInt(editTextWork.getText().toString()));
                 taskInfo.setTarget(Integer.parseInt(editTextTarget.getText().toString()));
+                taskInfo.setDone(0);
 
                 messageDB.getMessageInfoDAO().insert(taskInfo);
                 return null;
@@ -110,4 +111,7 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
 
         return true;
     }
+
+
+
 }

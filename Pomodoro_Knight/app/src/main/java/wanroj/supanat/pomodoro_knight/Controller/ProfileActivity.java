@@ -1,5 +1,6 @@
 package wanroj.supanat.pomodoro_knight.Controller;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getSupportActionBar().setTitle("Profile");
-
+        final TextView displayName = (TextView)findViewById(R.id.textNameChar); 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -49,9 +53,29 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         getInformationProfile(user);
         setNavigationViewListner();
+        showNameDialog(displayName);
 
 
 
+
+    }
+
+    private void showNameDialog(final TextView displayName) {
+        final Dialog dialog = new Dialog(ProfileActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog);
+        final EditText editText = (EditText)dialog.findViewById(R.id.nameChar);
+        Button button = (Button)dialog.findViewById(R.id.buttonOK);
+        dialog.setCancelable(false);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayName.setText(editText.getText());
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
 
     }
 
@@ -136,4 +160,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
         return true;
     }
+
+
 }

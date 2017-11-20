@@ -8,7 +8,7 @@
     android:id="@+id/drawertimer"
     tools:context="wanroj.supanat.pomodoro_knight.Controller.TimerActivity">
 
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="91dp"
         android:text="Name of Task"
         android:textColor="@color/cardview_light_background"
         android:textSize="30sp"
@@ -28,16 +28,18 @@
 
     <TextView
         android:id="@+id/textViewTimer"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewTask"
         android:layout_centerHorizontal="true"
 
-        android:layout_marginTop="72dp"
+
+        android:layout_marginTop="68dp"
         android:background="@color/colorPrimaryDark"
+        android:gravity="center"
         android:text="3:0"
         android:textColor="@color/cardview_light_background"
-        android:textSize="50sp"
+        android:textSize="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTask" />
 
@@ -45,46 +47,52 @@
         android:id="@+id/buttonPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:layout_alignBaseline="@+id/buttonStop_Start"
         android:layout_alignBottom="@+id/buttonStop_Start"
-        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/textViewRound"
+        android:layout_toRightOf="@+id/textViewRound"
         android:background="#771C00"
         android:onClick="onPause"
         android:text="Pause"
         android:textColor="@color/cardview_light_background"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonStop_Start"
-        app:layout_constraintStart_toEndOf="@+id/buttonStop_Start"
-        app:layout_constraintTop_toTopOf="@+id/buttonStop_Start"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonStop_Start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTimer"
 
-        android:layout_marginTop="52dp"
+
+        android:layout_above="@+id/textViewRound"
+        android:layout_marginBottom="51dp"
+        android:layout_toLeftOf="@+id/textViewRound"
+        android:layout_toStartOf="@+id/textViewRound"
         android:background="#771C00"
         android:onClick="onS"
         android:text="Start"
         android:textColor="@color/cardview_light_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimer" />
+        app:layout_constraintBottom_toBottomOf="@+id/buttonPause"
+        app:layout_constraintEnd_toStartOf="@+id/buttonPause"
+        app:layout_constraintTop_toTopOf="@+id/buttonPause"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonPause"
+        android:layout_alignParentBottom="true"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginBottom="78dp"
         android:text="1/10"
         android:textColor="@color/cardview_light_background"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonStop_Start" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
     <android.support.design.widget.NavigationView
 
         android:layout_width="wrap_content"

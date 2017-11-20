@@ -9,7 +9,9 @@ import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
  * Created by mild supanat on 19/11/2560.
  */
 
-@Database(entities = {TaskInfo.class}, version = 1)
+@Database(entities = {TaskInfo.class}, version = 2)
 public abstract class MessageDB extends RoomDatabase{
     public abstract MessageInfoDAO getMessageInfoDAO();
 }
+
+

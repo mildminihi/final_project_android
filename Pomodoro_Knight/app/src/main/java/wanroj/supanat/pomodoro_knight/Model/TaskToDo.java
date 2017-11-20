@@ -7,7 +7,7 @@ package wanroj.supanat.pomodoro_knight.Model;
 public class TaskToDo {
 
     private static TaskToDo taskToDoInstance;
-    private int id, target, workInterval;
+    private int id, target, workInterval, Done;
     private String taskName;
 
 
@@ -17,6 +17,14 @@ public class TaskToDo {
             taskToDoInstance = new TaskToDo();
         }
         return taskToDoInstance;
+    }
+
+    public int getDone() {
+        return Done;
+    }
+
+    public void setDone(int done) {
+        Done = done;
     }
 
     public int getId() {

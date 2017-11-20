@@ -48,41 +48,47 @@
         android:layout_alignLeft="@+id/displayWork"
         android:layout_alignStart="@+id/displayWork" />
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignBaseline="@+id/displayName"
-        android:layout_alignBottom="@+id/displayName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:id="@+id/editTextWork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextName"
-        android:layout_alignStart="@+id/editTextName"
-        android:layout_below="@+id/editTextName"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="10 Minute" />
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/displayName"
+            android:layout_alignBottom="@+id/displayName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:textColorHint="@color/navigationheadercolor"
+            android:textColor="@android:color/background_light" />
 
         <EditText
-        android:id="@+id/editTextTarget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextWork"
-        android:layout_alignStart="@+id/editTextWork"
-        android:layout_below="@+id/editTextWork"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="2 Per Day" />
+            android:id="@+id/editTextWork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editTextName"
+            android:layout_alignStart="@+id/editTextName"
+            android:layout_below="@+id/editTextName"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="How many minutes?"
+            android:textColorHint="@color/navigationheadercolor"
+            android:textColor="@color/cardview_light_background" />
+
+        <EditText
+            android:id="@+id/editTextTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/editTextWork"
+            android:layout_alignStart="@+id/editTextWork"
+            android:layout_below="@+id/editTextWork"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="How many times?"
+            android:textColorHint="@color/navigationheadercolor"
+            android:textColor="@color/cardview_light_background" />
 
         <Button
             android:id="@+id/buttonCreate"

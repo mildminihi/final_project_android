@@ -113,6 +113,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         taskToDo.setTaskName(taskInfosGlobal.get(position).getTaskName());
                         taskToDo.setWorkInterval(taskInfosGlobal.get(position).getWorkInterval());
                         taskToDo.setTarget(taskInfosGlobal.get(position).getTarget());
+                        taskToDo.setDone(taskInfosGlobal.get(position).getDone());
                         Intent intent = new Intent(ListActivity.this, TimerActivity.class);
                         startActivity(intent);
                         finish();
@@ -121,40 +122,79 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//                        builder.setItems(new CharSequence[]{"Select Task To do", "Delete Task"},
-//                                new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialog, int which) {
-//                                        switch (which){
-//                                            case 0:
-//                                                TaskToDo taskToDo = new TaskToDo(taskInfos.get(position).getId(),
-//                                                        taskInfos.get(position).getTaskName(), taskInfos.get(position).getWorkInterval(),
-//                                                        taskInfos.get(position).getTarget());
-//                                                Intent intent = new Intent(ListActivity.this, TimerActivity.class);
-//                                                startActivity(intent);
-//                                                finish();
-//                                                break;
-//                                            case 1:
-//                                                deleteLine(position);
-//                                                Toast.makeText(ListActivity.this, "Task Deleted", Toast.LENGTH_LONG).show();
-//                                        }
-//                                    }
-//                                });
-//                        builder.show();
     }
 
     public void onDeleteAll(View view) {
-        final MessageDB messageDB = Room.databaseBuilder(getApplicationContext(),
-                MessageDB.class, "TASKLIST").build();
-        new AsyncTask<Void, Void, List<TaskInfo>>() {
-            @Override
-            protected List<TaskInfo> doInBackground(Void... voids) {
-                messageDB.getMessageInfoDAO().deleteAll();
-                return null;
-            }
-        }.execute();
-        showResult();
+
+        alertSureDelete();
+
+    }
+
+    private void alertSureDelete() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListActivity.this);
+        builder1.setMessage("You want to delete all tasks");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        final MessageDB messageDB = Room.databaseBuilder(getApplicationContext(),
+                                MessageDB.class, "TASKLIST").build();
+                        new AsyncTask<Void, Void, List<TaskInfo>>() {
+                            @Override
+                            protected List<TaskInfo> doInBackground(Void... voids) {
+                                messageDB.getMessageInfoDAO().deleteAll();
+                                return null;
+                            }
+                        }.execute();
+                        showResult();
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+    public void onAddTask(View view){
+        alertSureGoToAdd();
+
+    }
+
+    private void alertSureGoToAdd() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(ListActivity.this);
+        builder1.setMessage("You want to create task");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(ListActivity.this, CreateActivity.class);
+                        startActivity(intent);
+                        finish();
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     private void setNavigationViewListner() {

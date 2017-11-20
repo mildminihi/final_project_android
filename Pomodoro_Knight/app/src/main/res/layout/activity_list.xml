@@ -35,40 +35,61 @@
         <Button
             android:id="@+id/buttonDeleteAll"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/listtask"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="22dp"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@+id/displayTarget"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/displayTarget"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimary"
             android:onClick="onDeleteAll"
-            android:text="deleteall" />
+            android:text="delete all"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/displayWork"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/buttonDeleteAll"
+            android:layout_alignEnd="@+id/displayTarget"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/buttonDeleteAll"
-            android:layout_marginLeft="17dp"
-            android:layout_marginStart="17dp"
+            android:layout_alignRight="@+id/displayTarget"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
             android:background="@color/navigationheadercolor"
+
             android:text="Work Inteval"
             android:textColor="@android:color/background_light"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/displayTarget"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="21dp"
             android:layout_marginRight="21dp"
             android:background="@color/navigationheadercolor"
             android:text="Target"
             android:textColor="@android:color/background_light"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/buttonAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@+id/displayName"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/displayName"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:background="@color/colorPrimary"
+            android:onClick="onAddTask"
+            android:text="ADD Task"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="10sp" />
 
     </RelativeLayout>
 

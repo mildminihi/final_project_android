@@ -5,34 +5,23 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
- * Created by mild supanat on 18/11/2560.
+ * Created by mild supanat on 21/11/2560.
  */
 
-@Entity(tableName = "TASKLIST")
-public class TaskInfo {
+@Entity(tableName = "USERINFO")
+public class UserInfo {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "TASK_NAME")
+    @ColumnInfo(name = "USERID")
     private String taskName;
-
-    @ColumnInfo(name = "WORK_INTERVAL")
-    private int workInterval;
 
     @ColumnInfo(name = "TARGET")
     private int target;
 
     @ColumnInfo(name = "DONE")
     private int done;
-
-    public int getDone() {
-        return done;
-    }
-
-    public void setDone(int done) {
-        this.done = done;
-    }
 
     public int getId() {
         return id;
@@ -50,19 +39,19 @@ public class TaskInfo {
         this.taskName = taskName;
     }
 
-    public int getWorkInterval() {
-        return workInterval;
-    }
-
-    public void setWorkInterval(int workInterval) {
-        this.workInterval = workInterval;
-    }
-
     public int getTarget() {
         return target;
     }
 
     public void setTarget(int target) {
         this.target = target;
+    }
+
+    public int getDone() {
+        return done;
+    }
+
+    public void setDone(int done) {
+        this.done = done;
     }
 }
