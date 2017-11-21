@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import wanroj.supanat.pomodoro_knight.Model.CurrentID;
 import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
 import wanroj.supanat.pomodoro_knight.R;
 
@@ -20,6 +21,7 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private EditText editTextName, editTextWork, editTextTarget;
+    private CurrentID currentID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,8 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
                 taskInfo.setWorkInterval(Integer.parseInt(editTextWork.getText().toString()));
                 taskInfo.setTarget(Integer.parseInt(editTextTarget.getText().toString()));
                 taskInfo.setDone(0);
-
+                currentID = CurrentID.getCurrentIDInstance();
+                taskInfo.setUserID(currentID.getIdUser());
                 messageDB.getMessageInfoDAO().insert(taskInfo);
                 return null;
             }

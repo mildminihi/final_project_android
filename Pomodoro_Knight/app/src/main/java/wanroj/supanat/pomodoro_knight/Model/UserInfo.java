@@ -4,9 +4,6 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-/**
- * Created by mild supanat on 21/11/2560.
- */
 
 @Entity(tableName = "USERINFO")
 public class UserInfo {
@@ -15,7 +12,10 @@ public class UserInfo {
     private int id;
 
     @ColumnInfo(name = "USERID")
-    private String taskName;
+    private String uid;
+
+    @ColumnInfo(name = "NAME")
+    private String name;
 
     @ColumnInfo(name = "TARGET")
     private int target;
@@ -27,17 +27,26 @@ public class UserInfo {
         return id;
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getTaskName() {
-        return taskName;
-    }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
 
     public int getTarget() {
         return target;

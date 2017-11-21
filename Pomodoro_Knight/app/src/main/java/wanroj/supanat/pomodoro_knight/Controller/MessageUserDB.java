@@ -9,7 +9,7 @@ import wanroj.supanat.pomodoro_knight.Model.UserInfo;
  * Created by mild supanat on 21/11/2560.
  */
 
-@Database(entities = {UserInfo.class}, version = 1)
+@Database(entities = {UserInfo.class}, version = 2)
 public abstract class MessageUserDB extends RoomDatabase {
-    public abstract MeessageUserInfoDAO getMessageInfoDAO();
+    public abstract MessageUserInfoDAO getMessageInfoDAO();
 }

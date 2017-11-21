@@ -26,6 +26,17 @@ public class TaskInfo {
     @ColumnInfo(name = "DONE")
     private int done;
 
+    @ColumnInfo(name = "USERID")
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
     public int getDone() {
         return done;
     }

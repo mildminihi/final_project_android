@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import wanroj.supanat.pomodoro_knight.Model.CurrentID;
 import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
 import wanroj.supanat.pomodoro_knight.Model.TaskToDo;
 import wanroj.supanat.pomodoro_knight.R;
@@ -39,6 +40,7 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
     private TaskToDo taskToDo;
     private String secondConvert = "0";
     private TaskInfo taskInfo;
+    private CurrentID currentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setNavigationViewListner();
         taskToDo = TaskToDo.getTaskToDoInstance();
-        taskName.setText(taskToDo.getTaskName());
+
         minutes = taskToDo.getWorkInterval();
         taskTarget.setText(taskToDo.getDone()+"/"+taskToDo.getTarget());
         checkIndexSecond(seconds);
@@ -65,7 +67,7 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
         if (taskToDo.getTaskName() == null){
             doAlertDialog();
         }
-
+        taskName.setText(taskToDo.getTaskName());
 
     }
 
@@ -73,7 +75,7 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
         AlertDialog.Builder builder1 = new AlertDialog.Builder(TimerActivity.this);
         builder1.setMessage("You Don't have tasks to do.\n" +
                 "Please go to tasks list to select or create task");
-        builder1.setCancelable(true);
+        builder1.setCancelable(false);
 
         builder1.setPositiveButton(
                 "Create task",
@@ -263,6 +265,8 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
                 taskInfo.setTarget(taskToDo.getTarget());
                 taskInfo.setWorkInterval(taskToDo.getWorkInterval());
                 taskInfo.setDone(taskToDo.getDone());
+                currentID = CurrentID.getCurrentIDInstance();
+                taskInfo.setUserID(currentID.getIdUser());
                 messageDB.getMessageInfoDAO().update(taskInfo);
                 return null;
             }

@@ -1,8 +1,10 @@
 package wanroj.supanat.pomodoro_knight.Controller;
 
 import android.app.Dialog;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -22,15 +24,25 @@ import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.List;
+
 import wanroj.supanat.pomodoro_knight.Model.AppUserInfo;
+import wanroj.supanat.pomodoro_knight.Model.CurrentID;
+import wanroj.supanat.pomodoro_knight.Model.Rank;
+import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
 import wanroj.supanat.pomodoro_knight.R;
 
 public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private NavigationView navigationView;
-    private TextView textName, textEmail, textId;
 
+
+
+    private TextView textName, sumTargetDis, sumDoneDis, displayState, displayNext;
+    private String uid;
     private ImageView imageProfile;
     private DrawerLayout drawerLayout;
+    private CurrentID currentID;
+    private int sumTarget, sumDone;
+    private TextView displayName;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
 
@@ -39,25 +51,59 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getSupportActionBar().setTitle("Profile");
-        final TextView displayName = (TextView)findViewById(R.id.textNameChar); 
+
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        sumDoneDis = (TextView)findViewById(R.id.sumDone);
+        sumTargetDis = (TextView)findViewById(R.id.sumTarget);
+        displayState = (TextView)findViewById(R.id.displayState);
+        displayNext = (TextView)findViewById(R.id.displayNext);
         textName = (TextView)findViewById(R.id.textName);
-        textEmail = (TextView)findViewById(R.id.textEmail);
-        textId = (TextView)findViewById(R.id.textId);
+        displayName = (TextView)findViewById(R.id.textNameChar);
         imageProfile =(ImageView)findViewById(R.id.imageProfile);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         getInformationProfile(user);
         setNavigationViewListner();
-        showNameDialog(displayName);
+        currentID = CurrentID.getCurrentIDInstance();
+        currentID.setIdUser(uid);
+        showResult();
+        if (currentID.getNameUser() != null){
+            displayName.setText(currentID.getNameUser());
+        }
 
+    }
 
+    private void showResult() {
+        final MessageDB messageDB = Room.databaseBuilder(getApplicationContext(),
+                MessageDB.class, "TASKLIST").build();
+        new AsyncTask<Void, Void, List<TaskInfo>>(){
 
+            @Override
+            protected List<TaskInfo> doInBackground(Void... voids) {
+                currentID = CurrentID.getCurrentIDInstance();
+                List<TaskInfo> result = messageDB.getMessageInfoDAO().findTaskByUid(currentID.getIdUser());
+                return result;
+            }
 
+            @Override
+            protected void onPostExecute(final List<TaskInfo> taskInfos) {
+                sumDone = 0;
+                sumTarget = 0;
+                for (TaskInfo table: taskInfos) {
+                    sumTarget += table.getTarget();
+                    sumDone += table.getDone();
+                }
+                Rank rank = new Rank();
+                sumTargetDis.setText(String.valueOf(sumTarget));
+                sumDoneDis.setText(String.valueOf(sumDone));
+                displayState.setText("Now you're the : "+rank.checkRank(sumDone));
+                displayNext.setText("Next Rank is : "+rank.checkNext(sumDone));
+
+            }
+        }.execute();
     }
 
     private void showNameDialog(final TextView displayName) {
@@ -71,20 +117,26 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 displayName.setText(editText.getText());
+                currentID.setNameUser(editText.getText().toString());
+
                 dialog.dismiss();
             }
         });
         dialog.show();
 
     }
+    public void onEdit(View view){
+        showNameDialog(displayName);
+    }
+
+
 
     private void setNavigationViewListner() {
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
-
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -99,12 +151,12 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         if (user != null) {
             AppUserInfo appUserInfo = new AppUserInfo(user.getDisplayName(), user.getEmail(), user.getPhotoUrl(), user.getUid());
             String name = appUserInfo.getName();
-            String email = appUserInfo.getEmail();
+//            String email = appUserInfo.getEmail();
             Uri photoUrl = appUserInfo.getPhotoUrl();
-            String uid = appUserInfo.getUid();
+            uid = appUserInfo.getUid();
             textName.setText(name);
-            textEmail.setText(email);
-            textId.setText(uid);
+//            textEmail.setText(email);
+//            textId.setText(uid);
             Glide.with(ProfileActivity.this).load(photoUrl.toString()).into(imageProfile);
 
         } else {

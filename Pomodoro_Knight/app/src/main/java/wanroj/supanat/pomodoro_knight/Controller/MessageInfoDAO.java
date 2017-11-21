@@ -21,8 +21,8 @@ interface MessageInfoDAO {
     @Query("SELECT * FROM TASKLIST")
     List<TaskInfo> findAll();
 
-    @Query("SELECT * FROM TASKLIST WHERE TASK_NAME LIKE :name")
-    public abstract List<TaskInfo> findTaskByName(String name);
+    @Query("SELECT * FROM TASKLIST WHERE USERID LIKE :uid")
+    public abstract List<TaskInfo> findTaskByUid(String uid);
 
     @Query("SELECT SUM(DONE) from TASKLIST")
     int sumDone();

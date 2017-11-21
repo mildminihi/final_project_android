@@ -55,13 +55,12 @@
             android:id="@+id/textNameChar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/imageProfile"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/imageProfile"
-            android:text="Name"
+            android:text=" The Lazy Man"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/textName"
             android:layout_width="wrap_content"
@@ -74,40 +73,121 @@
             android:textSize="15sp"
             />
 
-    </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageAdd"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center">
+            android:layout_alignTop="@+id/textNameChar"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/imageProfile"
+            android:layout_toRightOf="@+id/textNameChar"
+            android:onClick="onEdit"
+            app:srcCompat="@drawable/add" />
+
+    </RelativeLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:textAlignment="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/displayDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginStart="41dp"
+            android:text="Tasks Done!"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp" />
+
+
+        <TextView
+            android:id="@+id/displayTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginStart="41dp"
+            android:text="Target!"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp" />
 
 
 
 
-            <TextView
-                android:id="@+id/textEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="8dp"
-                android:text="Email"
-                android:textAlignment="center"
-                android:textColor="@color/cardview_light_background"
-                 />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp"
-                android:text="ID"
-                android:textColor="@color/cardview_light_background"
-                />
+        <TextView
+            android:id="@+id/sumDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginStart="50dp"
+            android:text="0"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp" />
 
 
+        <TextView
+            android:id="@+id/sumTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="38dp"
+            android:layout_marginRight="38dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginStart="50dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/displayState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Now you're the most lazy villager."
+        android:textColor="@color/cardview_light_background"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/displayNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Next Rank is : Regular villager"/>
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/cardview_light_background"
+        android:text="Let the world know who you are." />
 
 
-        </RelativeLayout>
 </LinearLayout>
 
 

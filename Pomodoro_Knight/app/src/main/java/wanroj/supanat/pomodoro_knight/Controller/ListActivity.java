@@ -15,11 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
+import wanroj.supanat.pomodoro_knight.Model.CurrentID;
 import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
 import wanroj.supanat.pomodoro_knight.Model.TaskToDo;
 import wanroj.supanat.pomodoro_knight.R;
@@ -29,31 +29,23 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private ListView list;
-    private TextView nameTask;
     private List<TaskInfo> taskInfosGlobal;
-    private AdapterList adapterList;
+    private CurrentID currentID;
+
+    private TaskToDo taskToDo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
+        getSupportActionBar().setTitle("Tasks List");
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerlist);
-
-
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setNavigationViewListner();
-
-
-
-
-
         showResult();
-
-
     }
 
 
@@ -65,7 +57,9 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             protected List<TaskInfo> doInBackground(Void... voids) {
-                List<TaskInfo> result = messageDB.getMessageInfoDAO().findAll();
+                currentID = CurrentID.getCurrentIDInstance();
+
+                List<TaskInfo> result = messageDB.getMessageInfoDAO().findTaskByUid(currentID.getIdUser());
                 return result;
             }
 
@@ -98,6 +92,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         deleteLine(position);
+                        taskToDo = TaskToDo.getTaskToDoInstance();
+                        taskToDo.setTaskName(null);
                         Toast.makeText(ListActivity.this, "Task Deleted", Toast.LENGTH_LONG).show();
                         dialog.cancel();
                     }
@@ -108,7 +104,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
-                        TaskToDo taskToDo = TaskToDo.getTaskToDoInstance();
+                        taskToDo = TaskToDo.getTaskToDoInstance();
                         taskToDo.setId(taskInfosGlobal.get(position).getId());
                         taskToDo.setTaskName(taskInfosGlobal.get(position).getTaskName());
                         taskToDo.setWorkInterval(taskInfosGlobal.get(position).getWorkInterval());
@@ -153,6 +149,8 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                             @Override
                             protected List<TaskInfo> doInBackground(Void... voids) {
                                 messageDB.getMessageInfoDAO().deleteAll();
+                                taskToDo = TaskToDo.getTaskToDoInstance();
+                                taskToDo.setTaskName(null);
                                 return null;
                             }
                         }.execute();
@@ -209,6 +207,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             @Override
             protected List<TaskInfo> doInBackground(Void... voids) {
                 messageDB.getMessageInfoDAO().deleteTask(taskInfosGlobal.get(position));
+
                 return null;
             }
         }.execute();
@@ -237,7 +236,11 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             case R.id.timer: {
                 Intent intent = new Intent(ListActivity.this, TimerActivity.class);
                 startActivity(intent);
+
+
+
                 finish();
+
                 break;
             }
             case R.id.add: {
