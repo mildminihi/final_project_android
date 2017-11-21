@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import wanroj.supanat.pomodoro_knight.Model.CurrentID;
 import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
@@ -22,6 +23,8 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private EditText editTextName, editTextWork, editTextTarget;
     private CurrentID currentID;
+
+    private Validate validate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,7 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextWork = (EditText) findViewById(R.id.editTextWork);
         editTextTarget = (EditText) findViewById(R.id.editTextTarget);
+        validate = new Validate();
 
 
         drawerLayout = (DrawerLayout)findViewById(R.id.draweradd);
@@ -50,21 +54,48 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
 
             @Override
             protected TaskInfo doInBackground(Void... voids) {
+
                 TaskInfo taskInfo = new TaskInfo();
-                taskInfo.setTaskName(editTextName.getText().toString());
-                taskInfo.setWorkInterval(Integer.parseInt(editTextWork.getText().toString()));
-                taskInfo.setTarget(Integer.parseInt(editTextTarget.getText().toString()));
-                taskInfo.setDone(0);
-                currentID = CurrentID.getCurrentIDInstance();
-                taskInfo.setUserID(currentID.getIdUser());
-                messageDB.getMessageInfoDAO().insert(taskInfo);
-                return null;
+
+                if (doValidate()){
+                    taskInfo.setTaskName(editTextName.getText().toString());
+                    taskInfo.setWorkInterval(Integer.parseInt(editTextWork.getText().toString()));
+                    taskInfo.setTarget(Integer.parseInt(editTextTarget.getText().toString()));
+                    taskInfo.setDone(0);
+                    currentID = CurrentID.getCurrentIDInstance();
+                    taskInfo.setUserID(currentID.getIdUser());
+                    messageDB.getMessageInfoDAO().insert(taskInfo);
+                    return null;
+                }
+                else
+
+                    //showToast();
+
+            return null;
             }
         }.execute();
-        Intent intent = new Intent(CreateActivity.this, ListActivity.class);
-        startActivity(intent);
-        finish();
+        if (doValidate()) {
+            Intent intent = new Intent(CreateActivity.this, ListActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else showToast();
 
+    }
+
+    private void showToast() {
+        Toast.makeText(CreateActivity.this, validate.validateTaskName(editTextName.getText().toString())+"\n"
+                +validate.validateWork(editTextWork.getText().toString())+"\n"+
+                validate.validateTarget(editTextTarget.getText().toString())+"\n"+"Please try again!",Toast.LENGTH_LONG).show();
+    }
+
+    private boolean doValidate() {
+        if (validate.validateTaskName(editTextName.getText().toString()) == "Validate Task Name Complete" &&
+                validate.validateWork(editTextWork.getText().toString()) == "Validate Work Interval Complete" &&
+                validate.validateTarget(editTextTarget.getText().toString())=="Validate Target Complete"){
+            return true;
+        }
+        return false;
     }
 
     @Override

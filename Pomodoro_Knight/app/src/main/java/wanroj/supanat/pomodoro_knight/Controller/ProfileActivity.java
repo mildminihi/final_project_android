@@ -1,13 +1,19 @@
 package wanroj.supanat.pomodoro_knight.Controller;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.arch.persistence.room.Room;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.login.LoginManager;
@@ -31,6 +38,7 @@ import wanroj.supanat.pomodoro_knight.Model.CurrentID;
 import wanroj.supanat.pomodoro_knight.Model.Rank;
 import wanroj.supanat.pomodoro_knight.Model.TaskInfo;
 import wanroj.supanat.pomodoro_knight.R;
+import wanroj.supanat.pomodoro_knight.View.Screenshot;
 
 public class ProfileActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -38,12 +46,14 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
 
     private TextView textName, sumTargetDis, sumDoneDis, displayState, displayNext;
     private String uid;
-    private ImageView imageProfile;
+    private ImageView imageProfile, imageView;
     private DrawerLayout drawerLayout;
     private CurrentID currentID;
     private int sumTarget, sumDone;
     private TextView displayName;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private final int WRITE_EXTERNAL_REQUEST_CODE = 2;
+    private View rootView;
 
 
     @Override
@@ -53,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
         getSupportActionBar().setTitle("Profile");
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+        rootView = (View)drawerLayout.getRootView();
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -214,4 +225,45 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     }
 
 
+    //--------------------------Shared
+
+    private void createShareIntent(Uri uriImage) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("image/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, uriImage);
+        try {
+            startActivity(Intent.createChooser(shareIntent, " How do you want to share? "));
+        } catch (ActivityNotFoundException e) {
+        }
+    }
+    public void onCheck(View view) {
+        if (askPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, WRITE_EXTERNAL_REQUEST_CODE)) {
+            Bitmap image = Screenshot.takescreenshotOfRootView(rootView);
+            Uri screenshotUri = Screenshot.getImageUri(this.getApplicationContext(), image);
+
+            createShareIntent(screenshotUri);
+        }
+    }
+    private boolean askPermission(String permission, int requestCode) {
+        if (ContextCompat.checkSelfPermission(ProfileActivity.this, permission) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{permission}, requestCode);
+            return false;
+        } else {
+            Toast.makeText(ProfileActivity.this, "Permission is Already Granted", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case WRITE_EXTERNAL_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(ProfileActivity.this, "WRITE_EXTERNAL Permission Granted", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ProfileActivity.this, "WRITE_EXTERNAL Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+        }
+    }
 }

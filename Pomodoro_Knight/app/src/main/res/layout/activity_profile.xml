@@ -180,12 +180,13 @@
 
     <Button
         android:id="@+id/shareButton"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/cardview_light_background"
-        android:text="Let the world know who you are." />
+        android:text="Let the world know who you are."
+        android:onClick="onCheck"
+        android:textColor="@color/cardview_light_background" />
 
 
 </LinearLayout>
