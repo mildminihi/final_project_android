@@ -236,11 +236,7 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
             case R.id.timer: {
                 Intent intent = new Intent(ListActivity.this, TimerActivity.class);
                 startActivity(intent);
-
-
-
                 finish();
-
                 break;
             }
             case R.id.add: {
@@ -250,9 +246,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.listmenu: {
-                Intent intent = new Intent(ListActivity.this, ListActivity.class);
-                startActivity(intent);
-                finish();
                 break;
             }
         }

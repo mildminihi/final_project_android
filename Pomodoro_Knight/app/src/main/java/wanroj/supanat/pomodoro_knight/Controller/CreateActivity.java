@@ -129,9 +129,6 @@ public class CreateActivity extends AppCompatActivity implements NavigationView.
                 break;
             }
             case R.id.add:{
-                Intent intent = new Intent(CreateActivity.this, CreateActivity.class);
-                startActivity(intent);
-                finish();
                 break;
             }
             case R.id.listmenu: {

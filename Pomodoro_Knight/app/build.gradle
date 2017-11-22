@@ -40,5 +40,6 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha3"
 
 
+    testCompile 'org.testng:testng:6.9.6'
 }
 apply plugin: 'com.google.gms.google-services'

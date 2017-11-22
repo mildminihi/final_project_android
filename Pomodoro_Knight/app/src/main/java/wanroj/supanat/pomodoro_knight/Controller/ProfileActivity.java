@@ -195,9 +195,6 @@ public class ProfileActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.profile:{
-                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-                startActivity(intent);
-                finish();
                 break;
             }
             case R.id.timer:{

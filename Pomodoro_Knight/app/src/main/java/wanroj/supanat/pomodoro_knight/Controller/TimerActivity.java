@@ -41,6 +41,8 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
     private String secondConvert = "0";
     private TaskInfo taskInfo;
     private CurrentID currentID;
+    private String checkGo;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,49 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
         }
         taskName.setText(taskToDo.getTaskName());
 
+    }
+
+    private void sureExit(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(TimerActivity.this);
+        builder1.setMessage("You haven't finished your task yet. Do you want to leave without finishing?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Leave",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        switch (checkGo){
+                            case "profile":
+                                intent = new Intent(TimerActivity.this, ProfileActivity.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                            case "add":
+                                intent = new Intent(TimerActivity.this, CreateActivity.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                            case "list":
+                                intent = new Intent(TimerActivity.this, ListActivity.class);
+                                startActivity(intent);
+                                finish();
+                                break;
+                        }
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Stay",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        checkGo = "Stay";
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     private void doAlertDialog() {
@@ -241,13 +286,13 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
 
             }, 0, 1000);
 
-            s_button.setText("Stop");
+            s_button.setText(R.string.stop);
 
         } else {
 
 
             checkStart = 0;
-            s_button.setText("Start");
+            s_button.setText(R.string.start);
             pause_button.setEnabled(false);
 
         }
@@ -286,28 +331,22 @@ public class TimerActivity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.profile:{
-                Intent intent = new Intent(TimerActivity.this, ProfileActivity.class);
-                startActivity(intent);
-                finish();
-                break;
+                    checkGo = "profile";
+                    sureExit();
+                    break;
             }
             case R.id.timer:{
-                Intent intent = new Intent(TimerActivity.this, TimerActivity.class);
-                startActivity(intent);
-                finish();
-                break;
+                    break;
             }
             case R.id.add:{
-                Intent intent = new Intent(TimerActivity.this, CreateActivity.class);
-                startActivity(intent);
-                finish();
-                break;
+                    checkGo = "add";
+                    sureExit();
+                    break;
             }
             case R.id.listmenu: {
-                Intent intent = new Intent(TimerActivity.this, ListActivity.class);
-                startActivity(intent);
-                finish();
-                break;
+                    checkGo = "list";
+                    sureExit();
+                    break;
             }
         }
         drawerLayout.closeDrawers();

@@ -17,16 +17,16 @@ public class Validate {
     public String validateWork(String input){
         if (input == null) return "Work Interval is null";
         else if (input.isEmpty())return "Work Interval is empty";
-        else if (Integer.parseInt(input) > 30)return "Work Interval more than 30 Minute";
         else if (!input.matches("^[0123456789]+$"))return "Work Interval contain non Number character";
+        else if (Integer.parseInt(input) > 30)return "Work Interval more than 30 Minute";
         else return "Validate Work Interval Complete";
     }
 
     public String validateTarget(String input){
         if (input == null)return "Target is null";
         else if (input.isEmpty())return "Target is empty";
-        else if (Integer.parseInt(input) > 30)return "Target more than 30 times";
         else if (!input.matches("^[0123456789]+$"))return "Target contain non Number character";
+        else if (Integer.parseInt(input) > 30)return "Target more than 30 times";
         else return "Validate Target Complete";
     }
 }

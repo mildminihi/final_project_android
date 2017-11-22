@@ -82,10 +82,10 @@
         android:id="@+id/textViewRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
 
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="79dp"
         android:text="1/10"
         android:textColor="@color/cardview_light_background"
         android:textSize="30sp"

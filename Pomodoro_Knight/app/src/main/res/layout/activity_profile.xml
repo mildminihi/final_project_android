@@ -93,7 +93,7 @@
 
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:textAlignment="center"
         android:orientation="vertical">
 
@@ -102,7 +102,7 @@
             android:id="@+id/displayDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="41dp"
             android:layout_marginStart="41dp"
             android:text="Tasks Done!"
@@ -130,14 +130,14 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/sumDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="41dp"
             android:layout_marginStart="50dp"
             android:text="0"
