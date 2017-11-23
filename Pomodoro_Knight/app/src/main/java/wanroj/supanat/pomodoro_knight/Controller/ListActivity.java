@@ -88,18 +88,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(
-                "Delete",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        deleteLine(position);
-                        taskToDo = TaskToDo.getTaskToDoInstance();
-                        taskToDo.setTaskName(null);
-                        Toast.makeText(ListActivity.this, "Task Deleted", Toast.LENGTH_LONG).show();
-                        dialog.cancel();
-                    }
-                });
-
-        builder1.setNegativeButton(
                 "Select",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -113,6 +101,19 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                         Intent intent = new Intent(ListActivity.this, TimerActivity.class);
                         startActivity(intent);
                         finish();
+
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "Delete",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteLine(position);
+                        taskToDo = TaskToDo.getTaskToDoInstance();
+                        taskToDo.setTaskName(null);
+                        Toast.makeText(ListActivity.this, "Task Deleted", Toast.LENGTH_LONG).show();
+                        dialog.cancel();
                     }
                 });
 
@@ -132,14 +133,6 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(
-                "No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        builder1.setNegativeButton(
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -155,6 +148,13 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
                             }
                         }.execute();
                         showResult();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
@@ -173,20 +173,20 @@ public class ListActivity extends AppCompatActivity implements NavigationView.On
         builder1.setCancelable(true);
 
         builder1.setPositiveButton(
-                "No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        builder1.setNegativeButton(
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(ListActivity.this, CreateActivity.class);
                         startActivity(intent);
                         finish();
+                        dialog.cancel();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
                 });
