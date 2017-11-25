@@ -1,6 +1,7 @@
 package wanroj.supanat.pomodoro_knight;
 
-import org.junit.Test;
+
+import org.testng.annotations.Test;
 
 import wanroj.supanat.pomodoro_knight.Controller.Validate;
 
@@ -13,8 +14,6 @@ import static junit.framework.Assert.assertEquals;
 
 public class ValidateTest {
     private Validate validate;
-
-
 
     @Test
     public void taskNameIsEmpty(){
