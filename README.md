@@ -39,7 +39,7 @@
 ![time](https://github.com/mildminihi/final_project_android/blob/master/art/timerhave.PNG)
 
 ## APK Download
-https://www.dropbox.com/s/efs6ipjwrtt347a/app-debug.apk?dl=0
+https://drive.google.com/file/d/1PeXLvTAUii1CHM2xTdEn8zzARvnOK4xM/view?usp=sharing
 
 ## Avialable on Google Play
 https://play.google.com/store/apps/details?id=wanroj.supanat.pomodoro_knight
