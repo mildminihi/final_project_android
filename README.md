@@ -1,6 +1,17 @@
 <h1 align="center"> Promodoro Knight </h1> <br>
 <p align="center">
-    <img src="https://github.com/mildminihi/final_project_android/blob/master/art/logo_final.png" alt="logo" height="100" width="100">
+    <a href="https://play.google.com/store/apps/details?id=wanroj.supanat.pomodoro_knight">
+    <img src="https://github.com/mildminihi/final_project_android/blob/master/art/featuregp.png" alt="feturephoto" height="400" width="1024">
+    </a>
+</p>
+
+<p align="center">
+    <img alt="logo" title="Google Play" src="https://github.com/mildminihi/final_project_android/blob/master/art/logo_final.png" height="100" width="100">
+</p>
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=wanroj.supanat.pomodoro_knight">
+    <img alt="Google Play" title="Google Play" src="http://i.imgur.com/mtGRPuM.png" width="140">
+  </a>
 </p>
 
 > เคยไหมกับการตั้งใจจะทำอะไรแล้วเกิดสมาธิหลุดกับสิ่งที่ทำอยู่เช่นกำลังอ่านหนังสือแต่เผลอแปปเดียวก็หยิบโทรศัพท์มาเล่น
@@ -29,3 +40,6 @@
 
 ## APK Download
 https://www.dropbox.com/s/efs6ipjwrtt347a/app-debug.apk?dl=0
+
+## Avialable on Google Play
+https://play.google.com/store/apps/details?id=wanroj.supanat.pomodoro_knight
