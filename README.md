@@ -47,6 +47,9 @@ https://play.google.com/store/apps/details?id=wanroj.supanat.pomodoro_knight
 ## Video Presentation
 https://youtu.be/Uwqfib3FDHw
 
+## Video Review
+https://www.youtube.com/watch?v=MwtAEeNIGro&feature=youtu.be
+
 ## Video Monkey Test
     $adb shell monkey -p wanroj.supanat.pomodoro_knight -s 01418546 10000
 https://www.youtube.com/watch?v=LdXvwrn6SZw
